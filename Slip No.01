@@ -1,0 +1,263 @@
+Write a Java Program to implement I/O Decorator for converting uppercase letters to
+lower case letters.
+Ans:
+
+
+import java.io.*;
+import java.util.*;
+class LowerCaseInputStream extends FilterInputStream {
+public LowerCaseInputStream(InputStream in) {
+super(in);
+}
+public int read() throws IOException {
+int c = super.read();
+return (c == -1 ? c : Character.toLowerCase((char) c));
+}
+public int read(byte[] b, int offset, int len) throws IOException {
+int result = super.read(b, offset, len);
+for (int i = offset; i < offset + result; i++) {
+b[i] = (byte) Character.toLowerCase((char) b[i]);
+}
+return result;
+}
+}
+public class Main {
+public static void main(String[] args) throws IOException {
+int c;
+try {
+InputStream in = new LowerCaseInputStream(
+new BufferedInputStream(
+new FileInputStream("test.txt")));
+while ((c = in.read()) >= 0) {
+System.out.print((char) c);
+}
+in.close();
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+}
+
+
+
+
+
+
+Write a Python program to prepare Scatter Plot for Iris Dataset.
+Ans :
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+df=pd.read_csv('C:\\Users\\Lenovo\\python practice\iris.csv'
+df.plot(kind ="scatter", x='SepalLengthCm', y='PetalLengthCm')
+df.plot.scatter(x='SepalLengthCm', y='PetalLengthCm')
+plt.scatter(df['SepalLengthCm'],df['PetalLengthCm'])
+
+
+
+
+
+
+
+Create an HTML form that contain the Student Registration details and write a JavaScr
+ipt to validate Student first and last name as it should not contain other than Alphabet
+s Student Registration Form in HTML with JavaScript Validation.
+Ans: 
+
+
+
+1) Student.html
+<html>
+<head>
+<script type="text/javascript" src="validation.js"></script>
+<style>
+ul {
+list-style-type: none;
+}
+form {
+background-color: hsl(0, 18%, 74%);
+}
+</style>
+</head>
+<body>
+<form action="#" name="StudentSignupForm" onsubmit="return(validateHTMlform());
+">
+<div cellpadding="4" width="20%" bgcolor="99FFFF" cellspacing="2">
+<ul>
+<li>
+<center>
+<font size=4><b>Student Registration Form</b></font>
+</center>
+</li>
+</ul>
+<ul>
+ <li><label for="first">First Name:</label></li>
+ <li><input type="text" name="first" size="50"/></li>
+</ul>
+<ul>
+ <li><label for="father">Father Name:</label></li>
+<li><input type="text" name="Father" size="50"/></li>
+ </ul>
+<ul>
+ <li><label for="last">Last Name:</label></li>
+ <li><input type="text" name="Last" size="50"/></li>
+</ul>
+<ul>
+<li>Address:</li>
+<li><input type="text" name="personal_address" id="personaladdress" size="30"></li
+></ul>
+<ul>
+<li>Gender:</li>
+<li><input type="radio" name="sex" value="male" size="10">Male
+<input type="radio" name="sex" value="Female" size="10">Female
+</li>
+</ul>
+<ul>
+<li>City:</li>
+<li><select name="City">
+<option value="-1" selected>select..</option>
+<option value="PUNE">PUNE</option>
+<option value="MUMBAI">MUMBAI</option>
+<option value="NASHIK">NASHIK</option>
+<option value="AURNGABAD">AURNGABAD</option>
+</select></li>
+</ul>
+<ul>
+<li>Course:</li>
+<li><select name="Course">
+<option value="-1" selected>select..</option>
+<option value="MCS">MCS</option>
+<option value="MCA">MCA</option>
+<option value="MBA">MBA</option>
+<option value="BCS">BCS</option>
+</select></li>
+</ul>
+<ul>
+<li>State:</li>
+<li><select Name="State">
+<option value="-1" selected>select..</option>
+<option value="New Delhi">MAHARASTRA</option>
+<option value="Mumbai">MUMBAI</option>
+<option value="Goa">GOA</option>
+<option value="GUJRAT">GUJRAT</option>
+</select></li>
+</ul>
+<ul>
+<li>District:</li>
+<li><select name="District">
+<option value="-1" selected>select..</option>
+<option value="AHEMADNAGR">AHEMADNAGR</option>
+<option value="NASHIK">NASHIK</option>
+<option value="BEED">BEED</option>
+<option value="PALGHAR">PALGHAR</option>
+</select></li>
+</ul>
+<ul>
+<li>PinCode:</li>
+<li><input type="text" name="pin_code" id="pincode" size="30"></li>
+</ul>
+<ul>
+<li>student email:</li><li><input type="text" name="email_id" id="emailid" size="30">
+</li>
+</ul>
+<ul>
+<li>Date Of Birth:</li>
+<li><input type="date" id="date_of_birth" name="dob"></li>
+</ul>
+<ul>
+<li>Mobile Number</li>
+<li><input type="text" name="mobileno" id="mobile_no" size="30"></li>
+</ul>
+<ul>
+<li><input type="reset"></li>
+<li colspan="2"><input type="submit" value="Submit Form" /></li>
+</ul>
+</div>
+</form>
+</body>
+</html>
+
+
+
+2) Validation.js
+function validateHTMlform() {
+ let form = document.StudentSignupForm;
+ if (form.first.value == "") {
+ alert("Enter Your First Name!");
+ form.textnames.focus();
+ return;
+ }
+ if (form.Father.value == "") {
+ alert("Enter Your Father Name!");
+ form.textname.focus();
+ return;
+ }
+ if (form.Last.value == "") {
+ alert("Enter Your Last Name!");
+ form.textnames.focus();
+ return;
+ }
+
+ if (form.personal_address.value == "") {
+ alert("Enter Your Postal Address!");
+ form.personal_address.focus();
+ return;
+ }
+ if (form.personaladdress.value == "") {
+ alert("Enter Your Personal Address!");
+ form.textnames.focus();
+ return;
+ }
+ if ((form.sex[0].checked == false) && (form.sex[1].checked == false)) {
+ alert("Choose Your Gender: Male or Female");
+ return false;
+ }
+ if (form.City.value == "-1") {
+ alert("Enter Your City!");form.City.focus();
+ return;
+ }
+ if (form.Course.value == "-1") {
+ alert("Enter Your Course!");
+ return;
+ }
+ if (form.District.value == "-1") {
+ alert("Select Your District!");
+ return;
+ }
+ if (form.State.value == "-1") {
+ alert("Select Your State!");
+ return;
+ }
+ if (form.pincode.value == "" ||
+ isNaN(form.pincode.value) ||
+ form.pincode.value.length != 6) {
+ alert("Enter your pincode in format ######.");
+ form.pincode.focus();
+ return;
+ }
+ var email = form.emailid.value;
+ atpos = email.indexOf("@");
+ dotpos = email.lastIndexOf(".");
+ if (email == "" || atpos < 1 || (dotpos - atpos < 2)) {
+ alert("Enter your correct email ID")
+ form.emailid.focus();
+ return;
+ }
+ if (form.dob.value == "") {
+ alert("Enter your DOB!");
+ form.dob.focus();
+ return;
+ }
+ if (form.mobileno.value == "" || isNaN(form.mobileno.value) ||
+ form.mobileno.value.length != 10) {
+ alert("Enter your Mobile No. in the format 123.");
+ form.mobileno.focus();
+ return;
+ }
+ return (true);
+ }
+ alert("Student Regestration is Completed Sucessfully");
