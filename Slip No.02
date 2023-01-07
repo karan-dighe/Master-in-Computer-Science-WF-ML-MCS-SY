@@ -1,0 +1,190 @@
+Write a Java Program to implement Singleton pattern for multithreading
+Ans:
+
+
+public class Main {
+public static void main(String ar[]) {
+Test1 t = new Test1();
+Test1 t2 = new Test1();
+Test1 t3 = new Test1();
+Thread tt = new Thread(t);
+Thread tt2 = new Thread(t2);
+Thread tt3 = new Thread(t3);
+Thread tt4 = new Thread(t);
+Thread tt5 = new Thread(t);
+tt.start();
+tt2.start();
+tt3.start();
+tt4.start();
+tt5.start();
+}
+}
+final class Test1 implements Runnable {
+@Override
+public void run() {
+for (int i = 0; i < 5; i++) {
+System.out.println(Thread.currentThread().getName() + " : " +
+Single.getInstance().hashCode());
+}
+}
+}
+class Single {
+private final static Single sing = new Single();
+private Single() {
+}
+public static Single getInstance() {
+return sing;
+}
+}
+
+
+
+
+
+
+Write a python program to find all null values in a given dataset and remove them.
+Ans : 
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+inport pandas as pd
+df=pd.read_csv('C:\\Users\\Lenovo\\python practice\iris.csv')
+df.isnull()
+
+
+
+
+
+
+
+Create an HTML form that contain the Employee Registration details and write a
+JavaScript to validate DOB, Joining Date, and Name.
+Ans : 
+
+
+1) Employee.html
+<html>
+<head>
+<script type="text/javascript" src="employee.js"></script>
+<style>
+ul {
+list-style-type: none;
+}
+form {
+background-color: hsla(141, 55%, 75%, 0.704);
+}
+</style>
+</head>
+<body>
+<form action="#" name="EmployeeRegistrationForm"
+onsubmit="return(validateHTMlform());">
+<div cellpadding="4" width="20%" bgcolor="99FFFF" cellspacing="2">
+<ul>
+<li>
+<center>
+<font size=4><b>EMPLOYEE REGISTRATION FORM</b></font>
+</center>
+</li>
+</ul>
+<ul>
+ <li><label for="first">First Name:</label></li>
+ <li><input type="text" name="first" size="50"/></li>
+</ul>
+<ul>
+ <li><label for="last">Last Name:</label></li>
+ <li><input type="text" name="last" size="50"/></li>
+</ul>
+<ul>
+ <li><label for="Employee id">Employee Id:</label></li>
+ <li><input type="text" name="Last" size="50"/></li>
+</ul>
+<ul>
+ <li>Date Of Birth:</li>
+<li><input type="date" id="dob" name="birthdate"></li>
+</ul>
+<ul>
+<li>Address:</li>
+<li><input type="text" name="paddress" id="personaladdress" size="30"></li></ul>
+<ul>
+<li>Gender:</li>
+<li><input type="radio" name="sex" value="male" size="10">Male
+<input type="radio" name="sex" value="Female" size="10">Female
+</li>
+</ul>
+<ul>
+<li>Country:</li>
+<li><select name="Country">
+<option value="-1" selected>select..</option>
+<option value="China">China</option>
+<option value="India">India</option>
+<option value="Japan">Japan</option>
+<option value="Iran">Iran</option>
+<option value="Itly">Itly</option>
+<option value="Canada">Canada</option>
+</select></li>
+</ul>
+<ul>
+ <li>Joining Date:</li>
+ <li><input type="date" id="Joining_date" name="jdate"></li>
+ </ul>
+<ul>
+<li>Contact Number</li>
+<li><input type="text" name="contactno" id="mobile_no" size="30"></li>
+</ul>
+<ul>
+<li colspan="2"><input type="submit" value="Submit Form" /></li>
+</ul>
+</div>
+</form>
+</body>
+</html>
+
+
+
+
+2) employee.js
+function validateHTMlform() {
+ let form = document.EmployeeRegistrationForm;
+ if (form.first.value == "") {
+ alert("Enter Your First Name!");
+ form.textnames.focus();
+ return;
+ }
+ if (form.last.value == "") {
+ alert("Enter Your Last Name!");
+ form.textnames.focus();
+ return;
+ }
+ if (form.dob.value == "") {
+ alert("Enter your DOB!");
+ form.dob.focus();
+ return;
+ }
+ if (form.paddress.value == "") {
+ alert("Enter Your Postal Address!");
+ form.paddress.focus();
+ return;
+ }
+ if ((form.sex[0].checked == false) && (form.sex[1].checked == false)) {
+ alert("Choose Your Gender: Male or Female");
+ return false;
+ }
+ if (form.Country.value == "-1") {
+ alert("Enter Your Country!");form.Country.focus();
+ return;
+ }
+ if (form.jdate.value == "") {
+ alert("Enter your Joining Date!");
+ form.jdate.focus();
+ return;
+ }
+ if (form.contactno.value == "" || isNaN(form.contactno.value) ||
+ form.contactno.value.length != 10) {
+ alert("Enter your Contact No. in the format 123.");
+ form.contactno.focus();
+ return;
+ }
+ return (true);
+ }
