@@ -1,0 +1,26 @@
+Write a python program to make Categorical values in numeric format for a given
+dataset.
+
+Ans :
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv('C:\\Users\\Lenovo\\python practice\iris.csv')
+from sklearn.preprocessing import LabelEncoder
+labelencoder = LabelEncoder()
+df['Species'] = labelencoder.fit_transform(df['Species'])
+df
+
+
+Create a Simple Web Server using node js.
+Ans : 
+
+Createserver.js
+
+
+var http = require('http');
+http.createServer(function (req, res) {
+ res.writeHead(200, {'Content-Type': 'text/plain'});
+ res.write('Hello World!');
+ res.end();
+}).listen(8080);
