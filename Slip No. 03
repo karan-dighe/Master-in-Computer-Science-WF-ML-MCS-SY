@@ -1,0 +1,70 @@
+Write a python program to make Categorical values in numeric format for a given
+dataset.
+
+
+Ans :
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv('C:\\Users\\Lenovo\\python practice\iris.csv')
+from sklearn.preprocessing import LabelEncoder
+labelencoder = LabelEncoder()
+df['Species'] = labelencoder.fit_transform(df['Species'])
+df
+
+
+
+Create an HTML form for Login and write a JavaScript to validate email ID using Regular
+Expression.
+Ans : 
+1) email.html
+<!DOCTYPE html>
+<html lang="en">
+ <script src="emailvalidate.js"></script>
+<head>
+<meta charset="utf-8">
+<title>JavaScript email validation</title>
+<style>
+li {
+list-style-type: none; font-size: 16pt;
+}
+.mail {
+margin: auto; padding-top: 10px; padding-bottom: 10px; width: 800px;
+background: rgb(225, 224, 124);
+border: 1px soild rgb(1, 20, 24);
+}
+.mail h2 {
+margin-left: 38px;
+}
+</style>
+</head>
+<body onload='document.form1.text1.focus()'>
+<div class="mail">
+<h2>Enter email to Validate</h2>
+<form name="form1" action="#">
+<ul>
+<li><input type='text' name='text1' /></li>
+<li> </li>
+<li class="Validate"><input type="submit" name="Validate" value="Validate"
+onclick="ValidateEmail(document.form1.text1)"
+/></li>
+<li> </li>
+</ul>
+</form>
+</div>
+</body>
+
+
+2) emailvalidate.js
+function ValidateEmail(input)
+ var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+ if (input.value.match(validRegex)) {
+ alert("Valid email address!");
+ document.form1.text1.focus();
+ return true;
+ } else {
+ alert("Invalid email address!");
+ document.form1.text1.focus();
+ return false;
+ }
+ }
