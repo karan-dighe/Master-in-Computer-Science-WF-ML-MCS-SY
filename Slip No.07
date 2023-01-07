@@ -1,0 +1,103 @@
+Write a Java program to implement undo command to test ceiling fan.
+Ans:
+
+
+interface Command {
+public void execute();
+}
+class CeilingFan {
+public void on() {
+System.out.println("Ceiling Fan is on");
+}
+public void off() {
+System.out.println("Ceiling Fan is off");
+}
+}
+class CeilingFanOnCommand implements Command {
+CeilingFan c;
+public CeilingFanOnCommand(CeilingFan l) {
+this.c = l;
+}
+public void execute() {
+c.on();
+}
+}
+class CeilingFanOffCommand implements Command {
+CeilingFan c;
+public CeilingFanOffCommand(CeilingFan l) {
+this.c = l;
+}
+public void execute() {
+c.off();
+}
+}
+class SimpleRemoteControl {
+Command slot;
+public SimpleRemoteControl() {
+}
+public void setCommand(Command command) {
+slot = command;
+}
+public void buttonWasPressed() {
+slot.execute();
+}
+}
+public class Main {
+public static void main(String[] args) {
+SimpleRemoteControl remote = new SimpleRemoteControl();
+CeilingFan ceilingFan = new CeilingFan();
+CeilingFanOnCommand ceilingFanOn = new
+CeilingFanOnCommand(ceilingFan);
+remote.setCommand(ceilingFanOn);
+remote.buttonWasPressed();
+CeilingFanOffCommand ceilingFanOff = new
+CeilingFanOffCommand(ceilingFan);
+remote.setCommand(ceilingFanOff);
+remote.buttonWasPressed();
+}
+}
+
+
+
+Write a python program to implement Naive Bayes.
+Ans :
+
+from sklearn.datasets import load_iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_sta
+te=1)
+from sklearn.naive_bayes import GaussianNB
+gnb = GaussianNB()
+gnb.fit(X_train, y_train)
+y_pred = gnb.predict(X_test)
+from sklearn import metrics
+print("Naive Bayes model accuracy(in %):", metrics.accuracy_score(
+y_test, y_pred)*100)
+
+
+
+Create a Node.js file with an upload field
+Ans: 
+
+upload.js
+var http = require('http');
+var formidable = require('formidable');
+http.createServer(function (req, res) {
+if (req.url == '/fileupload') {
+var form = new formidable.IncomingForm();
+form.parse(req, function (err, fields, files) {
+res.write('File uploaded');
+res.end();
+});
+} else {
+res.writeHead(200, {'Content-Type': 'text/html'});
+res.write('<form action="fileupload" method="post" enctype="multipart/formdata">');
+res.write('<input type="file" name="filetoupload"><br>');
+res.write('<input type="submit">');
+res.write('</form>');
+return res.end();
+}
+}).listen(8080);
