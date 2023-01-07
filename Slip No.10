@@ -1,0 +1,166 @@
+Write a Java Program to implement Strategy Pattern for Duck Behavior. Create
+instance variable that holds current state of Duck from there, we just need to
+handle all Flying Behaviors and Quack Behavior.
+Ans :
+
+
+
+abstract class Duck {
+FlyBehaviour flyBehaviour;
+QuackBehaviour quackBehaviour;
+public Duck() {
+}
+public abstract void display();
+public void performFly() {
+flyBehaviour.fly();
+}
+public void performQuack() {
+quackBehaviour.quack();
+}
+public void swim() {
+System.out.println("All ducks float even decoys");
+}
+public void setFlyBehaviour(FlyBehaviour fb) {
+flyBehaviour = fb;
+}
+public void setQuackBehaviour(QuackBehaviour qb) {
+QuackBehaviour q;
+}
+}
+class MallardDuck extends Duck {
+public MallardDuck() {
+quackBehaviour = new Quack();
+flyBehaviour = new FlyWithWings();
+}
+public void display() {
+System.out.println("I'm a real Mallard duck");
+}
+}
+interface FlyBehaviour {
+public void fly();
+}
+interface QuackBehaviour {
+public void quack() {
+System.out.println("Quack");
+}
+}
+class Quack implements QuackBehaviour {
+public void quack() {
+System.out.println("Quack");
+}
+}
+class FlyWithWings implements FlyBehaviour {
+public void fly() {
+System.out.println("I'm flying!!");
+}
+}
+public class Main {
+public static void main(String[] args) {
+Duck mallard = new MallardDuck();
+mallard.performQuack();
+mallard.performFly();
+}
+}
+/* Simple Programme */
+interface DuckB {
+public void oper();
+}
+class Fly implements DuckB {
+public void oper() {
+System.out.println("Duck Flies");
+}
+}
+class Quack implements DuckB {
+public void oper() {
+System.out.println("Duck Sounds Quack Quack");
+}
+}
+class Context {
+private DuckB s1;
+public Context(DuckB p) {
+this.s1 = p;
+}
+public void est() {
+s1.oper();
+}
+}
+public class Main {
+public static void main(String[] args) {
+Context c1 = new Context(new Fly());
+System.out.println("Duck Behaviour");
+c1.est();
+c1 = new Context(new Quack());
+System.out.println("Duck Behaviour ");
+c1.est();
+}
+}
+
+
+
+Write a Python program to prepare Scatter Plot for Iris Dataset.
+Ans :
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+df=pd.read_csv('C:\\Users\\Lenovo\\python practice\iris.csv'
+df.plot(kind ="scatter", x='SepalLengthCm', y='PetalLengthCm')
+df.plot.scatter(x='SepalLengthCm', y='PetalLengthCm')
+plt.scatter(df['SepalLengthCm'],df['PetalLengthCm'])
+
+
+
+Create a node.js file that Insert Multiple Records in "student" table, and
+ display the result object on console.
+Ans: 
+
+1) student.js
+var mysql = require('mysql');
+var con = mysql.createConnection({
+ host: "localhost",
+ user: "root",
+ password: "mypassword",
+ database: "MCS"
+});
+con.connect(function(err) {
+ if (err) throw err;
+ console.log("Connected!");
+ var sql = "CREATE TABLE students3 (name VARCHAR(255), address
+VARCHAR(255),class VARCHAR(255))";
+ con.query(sql, function (err, result) {
+ if (err) throw err;
+ console.log("Table created");
+ });
+});
+
+
+2) insertstudent.js
+var mysql = require('mysql');
+var con = mysql.createConnection({
+ host: "localhost",
+ user: "root",
+ password: "mypassword",
+ database: "MCS"
+});
+con.connect(function(err) {
+ if (err) throw err;
+ console.log("Connected!");
+ var sql = "INSERT INTO students3 (name, address,class) VALUES ?";
+ var values = [
+ ['Tejas', 'Kolhar','MCS'],
+ ['Manoj', 'Sadatpur','MCS'],
+ ['Sanket', 'Rahata','MCS'],
+ ['Sagar', 'Shrirampur','MCS'],
+ ['Abhi', 'Mamdapur','MCS'],
+ ['Sandy', 'Kukana','MCS'],
+ ['Aniket', 'Kanoli','MCS'],
+ ['Mahesh', 'Shrirampur','MCS']
+ ];
+ con.query(sql, [values], function (err, result) {
+ if (err) throw err;
+ console.log("Number of records inserted: " + result.affectedRows);
+ });
+});
