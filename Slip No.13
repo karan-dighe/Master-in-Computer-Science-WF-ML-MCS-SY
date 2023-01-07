@@ -1,0 +1,10 @@
+Write a Python program to prepare Scatter Plot for Iris Dataset.
+Ans :
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+df=pd.read_csv('C:\\Users\\Lenovo\\python practice\iris.csv'
+df.plot(kind ="scatter", x='SepalLengthCm', y='PetalLengthCm')
+df.plot.scatter(x='SepalLengthCm', y='PetalLengthCm')
+plt.scatter(df['SepalLengthCm'],df['PetalLengthCm'])
